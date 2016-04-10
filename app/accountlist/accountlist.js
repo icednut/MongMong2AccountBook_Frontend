@@ -8,35 +8,81 @@ angular.module('myApp.accountlist', ['ngRoute'])
       controller: 'AccountListController'
     });
   }])
-  .controller('AccountListController', ['$scope', '$mdMedia', '$mdDialog', '$window', function ($scope, $mdMedia, $mdDialog, $window) {
+  .controller('AccountListController', ['$scope', '$mdMedia', '$mdDialog', '$window', '$routeParams', function ($scope, $mdMedia, $mdDialog, $window, $routeParams) {
     angular.element(document).ready(function () {
-      $scope.accountBookItems = [{
-        "day": "03",
-        "title": "이월",
-        "accountPlusMinus": "+",
-        "accountAmount": "450000"
+      $scope.monthList = [{
+        "name": "Jan",
+        "value": "1"
       }, {
-        "day": "13",
-        "title": "1월 모임",
-        "href": "http://www.naver.com",
-        "accountPlusMinus": "-",
-        "accountAmount": "200000"
+        "name": "Feb",
+        "value": "2"
       }, {
-        "day": "15",
-        "title": "회비 입금",
-        "subtitle": "A언니",
-        "accountPlusMinus": "+",
-        "accountAmount": "10000"
+        "name": "Mar",
+        "value": "3"
       }, {
-        "day": "17",
-        "title": "회비 입금",
-        "subtitle": "B언니",
-        "accountPlusMinus": "+",
-        "accountAmount": "10000"
+        "name": "Apr",
+        "value": "4"
+      }, {
+        "name": "May",
+        "value": 5
+      }, {
+        "name": "Jun",
+        "value": 6
+      }, {
+        "name": "Jul",
+        "value": 7
+      }, {
+        "name": "Aug",
+        "value": 8
+      }, {
+        "name": "Sep",
+        "value": 9
+      }, {
+        "name": "Oct",
+        "value": 10
+      }, {
+        "name": "Nov",
+        "value": 11
+      }, {
+        "name": "Dec",
+        "value": 12
       }];
 
+      $scope.loadAccountBookItems(1);
       renderFooter($window);
     });
+
+    $scope.loadAccountBookItems = function(monthValue) {
+      // TODO: 임시로 데이터를 불러옴
+      if (monthValue == 1) {
+        $scope.accountBookItems = [{
+          "day": "03",
+          "title": "이월",
+          "accountPlusMinus": "+",
+          "accountAmount": "450000"
+        }, {
+          "day": "13",
+          "title": "1월 모임",
+          "href": "http://www.naver.com",
+          "accountPlusMinus": "-",
+          "accountAmount": "200000"
+        }, {
+          "day": "15",
+          "title": "회비 입금",
+          "subtitle": "A언니",
+          "accountPlusMinus": "+",
+          "accountAmount": "10000"
+        }, {
+          "day": "17",
+          "title": "회비 입금",
+          "subtitle": "B언니",
+          "accountPlusMinus": "+",
+          "accountAmount": "10000"
+        }];
+      } else {
+        $scope.accountBookItems = [];
+      }
+    };
 
     $scope.showDetail = function (ev) {
       var sourceElement = angular.element(ev.srcElement);

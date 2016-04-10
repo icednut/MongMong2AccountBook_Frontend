@@ -9,7 +9,9 @@ angular
   'ngMaterial'
 ])
 .config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/accountlist'});
+  $routeProvider.otherwise({
+    redirectTo: '/accountlist'
+  });
 }])
 .controller('IndexController', function($scope, $timeout, $mdSidenav, $log) {
   this.yearList = ['2016', '2017'];
@@ -49,4 +51,4 @@ angular
       }, wait || 10);
     };
   }
-});
+})
