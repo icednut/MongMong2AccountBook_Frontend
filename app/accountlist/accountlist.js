@@ -8,7 +8,7 @@ angular.module('myApp.accountlist', ['ngRoute'])
       controller: 'AccountListController'
     });
   }])
-  .controller('AccountListController', ['$scope', '$mdMedia', '$mdDialog', '$window', '$routeParams', function ($scope, $mdMedia, $mdDialog, $window, $routeParams) {
+  .controller('AccountListController', ['$scope', '$mdMedia', '$mdDialog', '$window', '$routeParams', function ($scope, $mdMedia, $mdDialog, $window, $routeParams, $http) {
     angular.element(document).ready(function () {
       $scope.monthList = [{
         "name": "Jan",
